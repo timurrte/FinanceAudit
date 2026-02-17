@@ -1,0 +1,52 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\timur\\source\\repos\\FinanceAudit\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E4BA00D1-3AB2-4B27-AF73-6608613BB038}|FinanceAudit.csproj|c:\\users\\timur\\source\\repos\\financeaudit\\addexpensewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E4BA00D1-3AB2-4B27-AF73-6608613BB038}|FinanceAudit.csproj|solutionrelative:addexpensewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4BA00D1-3AB2-4B27-AF73-6608613BB038}|FinanceAudit.csproj|C:\\Users\\timur\\source\\repos\\FinanceAudit\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E4BA00D1-3AB2-4B27-AF73-6608613BB038}|FinanceAudit.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\timur\\source\\repos\\FinanceAudit\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\timur\\source\\repos\\FinanceAudit\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-17T00:28:15.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddExpenseWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\timur\\source\\repos\\FinanceAudit\\AddExpenseWindow.xaml",
+              "RelativeDocumentMoniker": "AddExpenseWindow.xaml",
+              "ToolTip": "C:\\Users\\timur\\source\\repos\\FinanceAudit\\AddExpenseWindow.xaml",
+              "RelativeToolTip": "AddExpenseWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-17T21:00:44.535Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

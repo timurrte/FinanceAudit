@@ -1,0 +1,36 @@
+﻿<Window x:Class="ExpenseTracker.AddExpenseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        Title="Add New Expense" Height="403" Width="400"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+	<Border Padding="20" Background="#F5F7FA">
+		<StackPanel VerticalAlignment="Center">
+			<TextBlock Text="New Expense" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" Foreground="#333"/>
+
+			<TextBlock Text="Description"/>
+			<TextBox x:Name="txtDesc" Padding="5" Margin="0,5,0,15"/>
+
+			<TextBlock Text="Amount ($)"/>
+			<TextBox x:Name="txtAmount" Padding="5" Margin="0,5,0,15"/>
+
+			<TextBlock Text="Category"/>
+			<ComboBox x:Name="cmbCategory" Padding="5" Margin="0,5,0,15">
+				<ComboBoxItem IsSelected="True">Food</ComboBoxItem>
+				<ComboBoxItem>Housing</ComboBoxItem>
+				<ComboBoxItem>Transport</ComboBoxItem>
+				<ComboBoxItem>Entertainment</ComboBoxItem>
+				<ComboBoxItem>Utilities</ComboBoxItem>
+			</ComboBox>
+
+			<TextBlock Text="Date"/>
+			<DatePicker x:Name="dpDate" Margin="0,5,0,20" SelectedDate="{x:Static System:DateTime.Now}"/>
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+				<Button Content="Cancel" Width="80" Height="30" Margin="0,0,10,0" Click="Cancel_Click"/>
+				<Button Content="Save" Width="80" Height="30" Background="#007ACC" Foreground="White" Click="Save_Click"/>
+			</StackPanel>
+		</StackPanel>
+	</Border>
+</Window>
