@@ -1,0 +1,24 @@
+<Window x:Class="FinancialSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:FinancialSystem.Views"
+        xmlns:viewmodels="clr-namespace:FinancialSystem.ViewModels"
+        Title="Система фінансового обліку" Height="600" Width="900">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:CustomersViewModel}">
+            <views:CustomersView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:AccountsViewModel}">
+            <views:AccountsView />
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <ContentControl>
+            <ContentControl.Content>
+                <viewmodels:AccountsViewModel />
+            </ContentControl.Content>
+        </ContentControl>
+    </Grid>
+</Window>
