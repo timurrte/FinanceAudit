@@ -2,8 +2,8 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using System.Runtime.CompilerServices;
 using FinancialSystem.Domain.Models;
 using FinancialSystem.DataAccess;
 
