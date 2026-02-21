@@ -1,0 +1,75 @@
+﻿using System.Transactions;
+
+/// <summary>
+/// Абстрактний базовий клас для всіх банківських рахунків.
+/// Не може бути створений безпосередньо. Реалізує інкапсуляцію фінансових даних.
+/// </summary>
+
+namespace FinancialSystem.Domain.Models;
+
+    public abstract class BankAccount : BaseEntity
+{
+    public string AccountNumber { get; set; }
+
+    // Зв'язок із власником (Customer).
+    public int CustomerId { get; set; }
+    public virtual Customer Customer { get; set; }
+
+    /// <summary>
+    /// ІНКАПСУЛЯЦІЯ: Баланс може бути прочитаний ким завгодно, 
+    /// але змінений лише зсередини цього класу або його спадкоємців.
+    /// </summary>
+    public decimal Balance { get; protected set; }
+
+    // Композиція: Рахунок володіє своїми транзакціями. При видаленні рахунку
+    // видаляються всі його транзакції.[23]
+    public virtual ICollection<Transaction> Transactions { get; set; }
+
+    protected BankAccount(string accountNumber)
+    {
+        AccountNumber = accountNumber;
+        Balance = 0m;
+        Transactions = new List<Transaction>();
+    }
+
+    /// <summary>
+    /// Базовий метод поповнення рахунку. Містить логіку валідації.
+    /// </summary>
+    public virtual void Deposit(decimal amount, string description = "Поповнення готівкою")
+    {
+        if (amount <= 0)
+            throw new ArgumentException("Сума поповнення повинна бути більшою за нуль.");
+
+        Balance += amount;
+        AddTransaction(new DepositTransaction(amount, description));
+    }
+
+    /// <summary>
+    /// ВІРТУАЛЬНИЙ МЕТОД: Базова основа для Поліморфізму.
+    /// Цей метод може бути перевизначений (overridden) у похідних класах
+    /// для зміни правил зняття коштів (наприклад, для дозволу овердрафту).
+    /// </summary>
+    public virtual void Withdraw(decimal amount, string description = "Зняття готівки")
+    {
+        if (amount <= 0)
+            throw new ArgumentException("Сума зняття повинна бути більшою за нуль.");
+
+        if (Balance - amount < 0)
+            throw new InvalidOperationException("Операцію відхилено: Недостатньо коштів на рахунку.");
+
+        Balance -= amount;
+        AddTransaction(new WithdrawTransaction(amount, description));
+    }
+
+    /// <summary>
+    /// Абстрактний метод для автоматичної обробки закриття фінансового місяця.
+    /// Змушує всі похідні класи реалізувати власну унікальну логіку.
+    /// </summary>
+    public abstract void ProcessEndOfMonth();
+
+    protected void AddTransaction(Transaction transaction)
+    {
+        transaction.AccountId = this.Id;
+        Transactions.Add(transaction);
+    }
+}
