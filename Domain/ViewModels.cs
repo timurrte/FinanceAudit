@@ -44,6 +44,36 @@ namespace FinancialSystem.ViewModels
             remove => CommandManager.RequerySuggested -= value;
         }
     }
+        public class MainViewModel : ViewModelBase
+        {
+            // Зберігаємо екземпляри, щоб не втрачати стан при перемиканні
+            private readonly CustomersViewModel _customersViewModel;
+            private readonly AccountsViewModel _accountsViewModel;
+
+            private ViewModelBase _currentViewModel;
+
+            // Властивість, до якої буде прив'язаний ContentControl
+            public ViewModelBase CurrentViewModel
+            {
+                get => _currentViewModel;
+                set { _currentViewModel = value; OnPropertyChanged(); }
+            }
+
+            public ICommand ShowCustomersCommand { get; }
+            public ICommand ShowAccountsCommand { get; }
+
+            public MainViewModel()
+            {
+                _customersViewModel = new CustomersViewModel();
+                _accountsViewModel = new AccountsViewModel();
+
+                ShowCustomersCommand = new RelayCommand(o => CurrentViewModel = _customersViewModel);
+                ShowAccountsCommand = new RelayCommand(o => CurrentViewModel = _accountsViewModel);
+
+                // Встановлюємо стартову сторінку за замовчуванням
+                CurrentViewModel = _customersViewModel;
+            }
+        }
 
     // 2. VIEWMODEL ДЛЯ УПРАВЛІННЯ КЛІЄНТАМИ
     public class CustomersViewModel : ViewModelBase
@@ -86,22 +116,27 @@ namespace FinancialSystem.ViewModels
 
         private void AddCustomer(object parameter)
         {
-            // У реальному додатку тут би відкривалося діалогове вікно.
-            // Для прикладу створюємо тестового клієнта.
-            var newCustomer = new Customer
-            {
-                FirstName = "Новий",
-                LastName = "Клієнт",
-                IdentityNumber = "1234567890"
-            };
+            // Відкриваємо наше нове вікно
+            var dialog = new FinancialSystem.Views.CreateCustomerWindow();
 
-            using (var context = new FinancialDbContext())
+            // ShowDialog() зупиняє виконання коду тут, поки вікно не закриється
+            bool? result = dialog.ShowDialog();
+
+            // Якщо користувач натиснув "Зберегти" і валідація пройшла успішно
+            if (result == true && dialog.CreatedCustomer != null)
             {
-                context.Customers.Add(newCustomer);
-                context.SaveChanges();
+                var newCustomer = dialog.CreatedCustomer;
+
+                // Зберігаємо в базу даних
+                using (var context = new FinancialDbContext())
+                {
+                    context.Customers.Add(newCustomer);
+                    context.SaveChanges();
+                }
+
+                // Додаємо в ObservableCollection, щоб одразу побачити в таблиці (DataGrid)
+                Customers.Add(newCustomer);
             }
-
-            Customers.Add(newCustomer);
         }
 
         private bool CanDeleteCustomer(object parameter)

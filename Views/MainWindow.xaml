@@ -5,6 +5,10 @@
         xmlns:viewmodels="clr-namespace:FinancialSystem.ViewModels"
         Title="Система фінансового обліку" Height="600" Width="900">
 
+    <Window.DataContext>
+        <viewmodels:MainViewModel />
+    </Window.DataContext>
+
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodels:CustomersViewModel}">
             <views:CustomersView />
@@ -15,10 +19,20 @@
     </Window.Resources>
 
     <Grid>
-        <ContentControl>
-            <ContentControl.Content>
-                <viewmodels:AccountsViewModel />
-            </ContentControl.Content>
-        </ContentControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#f0f0f0" Padding="10">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Клієнти" Command="{Binding ShowCustomersCommand}" 
+                        Width="120" Height="35" Margin="0,0,10,0" FontSize="14"/>
+                <Button Content="Рахунки та транзакції" Command="{Binding ShowAccountsCommand}" 
+                        Width="180" Height="35" FontSize="14"/>
+            </StackPanel>
+        </Border>
+
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}" Margin="10"/>
     </Grid>
 </Window>

@@ -11,10 +11,15 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15">
-            <Button Content="Додати клієнта" Command="{Binding AddCustomerCommand}" 
-                    Width="130" Height="30" Margin="0,0,10,0"/>
-            <Button Content="Видалити обраного" Command="{Binding DeleteCustomerCommand}" 
-                    Width="130" Height="30"/>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15">
+                <Button Content="Додати клієнта" Command="{Binding AddCustomerCommand}" 
+            Width="130" Height="30" Margin="0,0,10,0"/>
+                <Button Content="Видалити обраного" Command="{Binding DeleteCustomerCommand}" 
+            Width="130" Height="30" Margin="0,0,10,0"/>
+
+                <Button Content="Відкрити рахунок" Click="OpenCreateAccount_Click" 
+            Width="130" Height="30"/>
+            </StackPanel>
         </StackPanel>
 
         <DataGrid Grid.Row="1" ItemsSource="{Binding Customers}" 
