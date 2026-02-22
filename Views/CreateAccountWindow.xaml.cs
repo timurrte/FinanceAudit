@@ -1,7 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using FinancialSystem.DataAccess;
 using FinancialSystem.Domain.Models;
-using FinancialSystem.DataAccess;
+using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace FinancialSystem.Views
 {
@@ -19,51 +20,69 @@ namespace FinancialSystem.Views
             this.Title = $"Новий рахунок для: {_selectedCustomer.FirstName} {_selectedCustomer.LastName}";
         }
 
+        private void AccountTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Ensure components are initialized
+            if (OverdraftPanel == null || CreditPanel == null || BalancePanel == null) return;
+
+            // Reset visibility
+            OverdraftPanel.Visibility = Visibility.Collapsed;
+            CreditPanel.Visibility = Visibility.Collapsed;
+            BalancePanel.Visibility = Visibility.Visible;
+
+            switch (AccountTypeComboBox.SelectedIndex)
+            {
+                case 0: // Savings
+                    break;
+                case 1: // Checking
+                    OverdraftPanel.Visibility = Visibility.Visible;
+                    break;
+                case 2: // Credit
+                    CreditPanel.Visibility = Visibility.Visible;
+                    BalancePanel.Visibility = Visibility.Collapsed; // Usually credit accounts start at 0 or limit
+                    break;
+            }
+        }
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (decimal.TryParse(BalanceTextBox.Text, out decimal initialBalance))
+            using (var context = new FinancialDbContext())
             {
-                using (var context = new FinancialDbContext())
+                BankAccount newAccount = null;
+                string newAccountNumber = $"UA{new Random().Next(1000000000, int.MaxValue)}";
+
+                decimal.TryParse(BalanceTextBox.Text, out decimal initialBalance);
+
+                try
                 {
-                    BankAccount newAccount = null;
-
-                    // 1. Generate a mock Account Number (e.g., UA + 10 random digits)
-                    // In a real app, this might come from a sequence in the database
-                    string newAccountNumber = $"UA{new Random().Next(1000000000, int.MaxValue)}";
-
-                    if (AccountTypeComboBox.SelectedIndex == 0)
+                    if (AccountTypeComboBox.SelectedIndex == 0) // Savings
                     {
-                        // SavingsAccount requires: string accountNumber, decimal balance
                         newAccount = new SavingsAccount(newAccountNumber, initialBalance);
                     }
-                    else if (AccountTypeComboBox.SelectedIndex == 1)
+                    else if (AccountTypeComboBox.SelectedIndex == 1) // Checking
                     {
-                        // CheckingAccount requires: string accountNumber, decimal balance, decimal overdraftLimit
-                        decimal defaultOverdraft = 1000;
-                        newAccount = new CheckingAccount(newAccountNumber, initialBalance, defaultOverdraft);
+                        decimal overdraft = decimal.Parse(OverdraftTextBox.Text);
+                        newAccount = new CheckingAccount(newAccountNumber, initialBalance, overdraft);
                     }
-                    else if (AccountTypeComboBox.SelectedIndex == 2)
+                    else if (AccountTypeComboBox.SelectedIndex == 2) // Credit
                     {
-                        // CheckingAccount requires: string accountNumber, decimal balance, decimal overdraftLimit
-                        decimal creditLimit = 5000;
-                        decimal penaltyRate = 0.05m;
-                        newAccount = new CreditAccount(newAccountNumber, creditLimit, penaltyRate);
+                        decimal limit = decimal.Parse(CreditLimitTextBox.Text);
+                        decimal penalty = decimal.Parse(PenaltyRateTextBox.Text);
+                        newAccount = new CreditAccount(newAccountNumber, limit, penalty);
                     }
 
-                    newAccount.CustomerId = _selectedCustomer.Id; 
-
+                    newAccount.CustomerId = _selectedCustomer.Id;
                     context.BankAccounts.Add(newAccount);
                     context.SaveChanges();
+
+                    MessageBox.Show("Рахунок успішно створено!");
+                    this.DialogResult = true;
+                    this.Close();
                 }
-
-                MessageBox.Show("Рахунок успішно створено!", "Успіх", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                this.DialogResult = true;
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Будь ласка, введіть коректну суму.", "Помилка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Помилка введення даних: {ex.Message}");
+                }
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
