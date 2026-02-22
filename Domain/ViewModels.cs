@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using FinancialSystem.Domain.Models;
 using FinancialSystem.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using System.Windows.Data;
 
 namespace FinancialSystem.ViewModels
 {
@@ -219,6 +220,7 @@ namespace FinancialSystem.ViewModels
 
                 TransactionAmount = 0; // Очищення поля після успішної операції
                 OnPropertyChanged(nameof(SelectedAccount)); // Оновлення інтерфейсу
+                CollectionViewSource.GetDefaultView(Accounts).Refresh();
             }
             catch (Exception ex)
             {
@@ -237,6 +239,7 @@ namespace FinancialSystem.ViewModels
 
                 TransactionAmount = 0;
                 OnPropertyChanged(nameof(SelectedAccount));
+                CollectionViewSource.GetDefaultView(Accounts).Refresh();
             }
             catch (InvalidOperationException ex)
             {

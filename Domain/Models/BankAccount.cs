@@ -27,7 +27,7 @@ namespace FinancialSystem.Domain.Models;
         protected set
         {
             _balance = value;
-            OnPropertyChanged(); // Tells the UI to update the DataGrid!
+            OnPropertyChanged();
         }
     }
 
