@@ -1,0 +1,109 @@
+\doxysection{Financial\+System.\+Domain.\+Models.\+Savings\+Account Class Reference}
+\hypertarget{class_financial_system_1_1_domain_1_1_models_1_1_savings_account}{}\label{class_financial_system_1_1_domain_1_1_models_1_1_savings_account}\index{FinancialSystem.Domain.Models.SavingsAccount@{FinancialSystem.Domain.Models.SavingsAccount}}
+Inheritance diagram for Financial\+System.\+Domain.\+Models.\+Savings\+Account:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_financial_system_1_1_domain_1_1_models_1_1_savings_account}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_a1e4461f422501b7db87894c5ee17d558}{Savings\+Account}} (string account\+Number, decimal interest\+Rate)
+\item 
+override void \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_aa4057fd5f47f15a82f60666485696992}{Process\+End\+Of\+Month}} ()
+\begin{DoxyCompactList}\small\item\em ПОЛІМОРФІЗМ:\+ Специфічна реалізація логіки закриття місяця. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account}{Financial\+System.\+Domain.\+Models.\+Bank\+Account}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_afa37bcb46ae39f24e0b9b537be7cd8e7}{Deposit}} (decimal amount, string description="{}Поповнення готівкою"{})
+\begin{DoxyCompactList}\small\item\em Базовий метод поповнення рахунку. Містить логіку валідації. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_abd4155d6d10858d6e92e56b3af209164}{Withdraw}} (decimal amount, string description="{}Зняття готівки"{})
+\begin{DoxyCompactList}\small\item\em ВІРТУАЛЬНИЙ МЕТОД:\+ Базова основа для Поліморфізму. Цей метод може бути перевизначений (overridden) у похідних класах для зміни правил зняття коштів (наприклад, для дозволу овердрафту). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_a58b0dc3525df5c87eb8740b3b976bdb2}{Process\+End\+Of\+Month}} ()
+\begin{DoxyCompactList}\small\item\em Абстрактний метод для автоматичної обробки закриття фінансового місяця. Змушує всі похідні класи реалізувати власну унікальну логіку. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+decimal \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_ac7633e0b1fd73e6ea0e6f2134112b670}{Interest\+Rate}}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account}{Financial\+System.\+Domain.\+Models.\+Bank\+Account}}}
+\begin{DoxyCompactItemize}
+\item 
+string \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_a848f47e2fb8fce3f39cf29a60a09d287}{Account\+Number}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+int \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_a2568223ba3dd4901aa2f4ecff419e185}{Customer\+Id}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+virtual Customer \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_a7899547f3c9a3bf68ba2b33797e1e2b8}{Customer}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+decimal \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_abdb1ec25ed90b1692c9bd8f76ef7531f}{Balance}}\hspace{0.3cm}{\ttfamily  \+[get, protected set]\+}
+\item 
+virtual ICollection$<$ \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_transaction}{Transaction}} $>$ \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_a30c4c25d6160135d1ebba58ed32bdcc1}{Transactions}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+string \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_acfc986a7c90486d8353e043eb236103e}{Account\+Type\+Name}}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_base_entity}{Financial\+System.\+Domain.\+Models.\+Base\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_base_entity_a5a17ac7d33bf90422c4c1be805700d1a}{Id}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account}{Financial\+System.\+Domain.\+Models.\+Bank\+Account}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_ac6fee2442c80f54bc309896b330986d5}{Bank\+Account}} (string account\+Number)
+\item 
+void \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account_a84e99c2cbe411f0e3478a6facc40a0a8}{Add\+Transaction}} (\doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_transaction}{Transaction}} transaction)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_base_entity}{Financial\+System.\+Domain.\+Models.\+Base\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_base_entity_a240668830f8871720119c81b03aa9f51}{On\+Property\+Changed}} (\+[Caller\+Member\+Name]\+ string property\+Name=null)
+\end{DoxyCompactItemize}
+\doxysubsection*{Events inherited from \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_base_entity}{Financial\+System.\+Domain.\+Models.\+Base\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+Property\+Changed\+Event\+Handler \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_base_entity_a1620a81f2c3ef1b0805910a438d18549}{Property\+Changed}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_a1e4461f422501b7db87894c5ee17d558}\index{FinancialSystem.Domain.Models.SavingsAccount@{FinancialSystem.Domain.Models.SavingsAccount}!SavingsAccount@{SavingsAccount}}
+\index{SavingsAccount@{SavingsAccount}!FinancialSystem.Domain.Models.SavingsAccount@{FinancialSystem.Domain.Models.SavingsAccount}}
+\doxysubsubsection{\texorpdfstring{SavingsAccount()}{SavingsAccount()}}
+{\footnotesize\ttfamily \label{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_a1e4461f422501b7db87894c5ee17d558} 
+Financial\+System.\+Domain.\+Models.\+Savings\+Account.\+Savings\+Account (\begin{DoxyParamCaption}\item[{string}]{account\+Number}{, }\item[{decimal}]{interest\+Rate}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_aa4057fd5f47f15a82f60666485696992}\index{FinancialSystem.Domain.Models.SavingsAccount@{FinancialSystem.Domain.Models.SavingsAccount}!ProcessEndOfMonth@{ProcessEndOfMonth}}
+\index{ProcessEndOfMonth@{ProcessEndOfMonth}!FinancialSystem.Domain.Models.SavingsAccount@{FinancialSystem.Domain.Models.SavingsAccount}}
+\doxysubsubsection{\texorpdfstring{ProcessEndOfMonth()}{ProcessEndOfMonth()}}
+{\footnotesize\ttfamily \label{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_aa4057fd5f47f15a82f60666485696992} 
+override void Financial\+System.\+Domain.\+Models.\+Savings\+Account.\+Process\+End\+Of\+Month (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ПОЛІМОРФІЗМ:\+ Специфічна реалізація логіки закриття місяця. 
+
+
+
+\label{doc-property-members}
+\Hypertarget{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_ac7633e0b1fd73e6ea0e6f2134112b670}\index{FinancialSystem.Domain.Models.SavingsAccount@{FinancialSystem.Domain.Models.SavingsAccount}!InterestRate@{InterestRate}}
+\index{InterestRate@{InterestRate}!FinancialSystem.Domain.Models.SavingsAccount@{FinancialSystem.Domain.Models.SavingsAccount}}
+\doxysubsubsection{\texorpdfstring{InterestRate}{InterestRate}}
+{\footnotesize\ttfamily \label{class_financial_system_1_1_domain_1_1_models_1_1_savings_account_ac7633e0b1fd73e6ea0e6f2134112b670} 
+decimal Financial\+System.\+Domain.\+Models.\+Savings\+Account.\+Interest\+Rate\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+Domain/\+\+Models/\+\doxymbox{\hyperlink{_savings_account_8cs}{Savings\+Account.\+cs}}\end{DoxyCompactItemize}

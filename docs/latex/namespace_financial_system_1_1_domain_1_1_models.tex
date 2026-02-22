@@ -1,0 +1,48 @@
+\doxysection{Financial\+System.\+Domain.\+Models Namespace Reference}
+\hypertarget{namespace_financial_system_1_1_domain_1_1_models}{}\label{namespace_financial_system_1_1_domain_1_1_models}\index{FinancialSystem.Domain.Models@{FinancialSystem.Domain.Models}}
+
+
+Абстрактний базовий клас для всіх банківських рахунків. Не може бути створений безпосередньо. Реалізує інкапсуляцію фінансових даних.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account}{Bank\+Account}}
+\item 
+class \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_base_entity}{Base\+Entity}}
+\item 
+class \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_checking_account}{Checking\+Account}}
+\item 
+class \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_credit_account}{Credit\+Account}}
+\item 
+class \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_customer}{Customer}}
+\item 
+class \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_deposit_transaction}{Deposit\+Transaction}}
+\item 
+class \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_savings_account}{Savings\+Account}}
+\item 
+class \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_transaction}{Transaction}}
+\item 
+class \doxymbox{\hyperlink{class_financial_system_1_1_domain_1_1_models_1_1_withdraw_transaction}{Withdraw\+Transaction}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Абстрактний базовий клас для всіх банківських рахунків. Не може бути створений безпосередньо. Реалізує інкапсуляцію фінансових даних. 
+
+Транзакція списання коштів (Спадкоємець 2).
+
+Базовий абстрактний клас для всіх фінансових транзакцій. Реалізує інтерфейс ITransaction\+Processor.
+
+Ощадний рахунок. Нараховує відсотки на позитивний залишок. Успадковує базову логіку від \doxylink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account}{Bank\+Account}.
+
+Транзакція зарахування коштів (Спадкоємець 1).
+
+Клас, що представляє клієнта банку. Демонструє відношення Агрегації з \doxylink{class_financial_system_1_1_domain_1_1_models_1_1_bank_account}{Bank\+Account} (1 до багатьох).
+
+Кредитний рахунок. Баланс представляє суму боргу.
+
+Розрахунковий рахунок. Дозволяє балансу опускатися нижче нуля в межах ліміту овердрафту. Стягує щомісячну комісію за обслуговування.
+
+Базовий абстрактний клас сутності. Реалізує інтерфейс IEntity. 

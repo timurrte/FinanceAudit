@@ -1,0 +1,11 @@
+digraph "FinancialSystem.Views.CreateCustomerWindow.InitializeComponent"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="FinancialSystem.Views.Create\lCustomerWindow.InitializeComponent",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="InitializeComponent."];
+  Node1 -> Node2 [id="edge2_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="FinancialSystem.Views.Create\lCustomerWindow.CreateCustomerWindow",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_financial_system_1_1_views_1_1_create_customer_window.html#a4af44b28adf70cf6d73f7b7fa2616dc9",tooltip=" "];
+}

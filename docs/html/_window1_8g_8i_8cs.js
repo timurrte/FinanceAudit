@@ -1,0 +1,4 @@
+var _window1_8g_8i_8cs =
+[
+    [ "FinancialSystem.Views.CreateAccountWindow", "class_financial_system_1_1_views_1_1_create_account_window.html", "class_financial_system_1_1_views_1_1_create_account_window" ]
+];

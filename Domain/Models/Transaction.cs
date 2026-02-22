@@ -25,7 +25,7 @@ public abstract class Transaction : BaseEntity, ITransactionProcessor
     {
         Amount = amount;
         Description = description;
-        Date = DateTime.UtcNow; // Фіксація точного часу (Timestamp)
+        Date = DateTime.UtcNow;
     }
 
     // Метод, який повинен бути реалізований специфічними типами транзакцій

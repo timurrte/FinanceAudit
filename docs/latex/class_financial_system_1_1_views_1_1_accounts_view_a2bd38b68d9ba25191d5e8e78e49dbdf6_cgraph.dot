@@ -1,0 +1,11 @@
+digraph "FinancialSystem.Views.AccountsView.AccountsView"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="FinancialSystem.Views.Accounts\lView.AccountsView",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge2_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="FinancialSystem.Views.Accounts\lView.InitializeComponent",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_financial_system_1_1_views_1_1_accounts_view.html#ab35dfd16e96d853a78dcc833464880d1",tooltip="InitializeComponent."];
+}
