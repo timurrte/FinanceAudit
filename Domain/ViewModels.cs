@@ -6,16 +6,15 @@ using System.Windows.Input;
 using System.Runtime.CompilerServices;
 using FinancialSystem.Domain.Models;
 using FinancialSystem.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinancialSystem.ViewModels
 {
-    // 1. БАЗОВИЙ КЛАС VIEWMODEL
-    // Забезпечує механізм сповіщення інтерфейсу про зміну даних.
+    // БАЗОВИЙ КЛАС VIEWMODEL
     public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // Використання CallerMemberName дозволяє не писати ім'я властивості вручну
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -199,7 +198,7 @@ namespace FinancialSystem.ViewModels
         {
             using (var context = new FinancialDbContext())
             {
-                var accountsFromDb = context.BankAccounts.ToList();
+                var accountsFromDb = context.BankAccounts.Include(a => a.Customer).ToList();
                 Accounts = new ObservableCollection<BankAccount>(accountsFromDb);
             }
         }

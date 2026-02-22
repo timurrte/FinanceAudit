@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+/// <summary>
 /// Клас, що представляє клієнта банку.
 /// Демонструє відношення Агрегації з BankAccount (1 до багатьох).
 /// </summary>

@@ -39,16 +39,18 @@ namespace FinancialSystem.Views
                     else if (AccountTypeComboBox.SelectedIndex == 1)
                     {
                         // CheckingAccount requires: string accountNumber, decimal balance, decimal overdraftLimit
-                        // I am passing 500m as a default overdraft limit here. Adjust as needed!
-                        decimal defaultOverdraft = 500m;
+                        decimal defaultOverdraft = 1000;
                         newAccount = new CheckingAccount(newAccountNumber, initialBalance, defaultOverdraft);
                     }
+                    else if (AccountTypeComboBox.SelectedIndex == 2)
+                    {
+                        // CheckingAccount requires: string accountNumber, decimal balance, decimal overdraftLimit
+                        decimal creditLimit = 5000;
+                        decimal penaltyRate = 0.05m;
+                        newAccount = new CreditAccount(newAccountNumber, creditLimit, penaltyRate);
+                    }
 
-                    // 2. Link the account to the customer
-                    // If CustomerId has a protected setter too, you might need an AssignCustomer() method 
-                    // on your BankAccount class, or you might need to add CustomerId to your constructors!
-                    // Assuming for now it has a public setter or you map it via the Customer object:
-                    // newAccount.CustomerId = _selectedCustomer.Id; 
+                    newAccount.CustomerId = _selectedCustomer.Id; 
 
                     context.BankAccounts.Add(newAccount);
                     context.SaveChanges();

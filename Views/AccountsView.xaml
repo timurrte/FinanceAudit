@@ -16,6 +16,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
                 <DataGridTextColumn Header="Номер рахунку" Binding="{Binding AccountNumber}" Width="*"/>
+                <DataGridTextColumn Header="Тип рахунку" Binding="{Binding AccountTypeName}" Width="*"/>
+
+                <DataGridTextColumn Header="Власник" Binding="{Binding Customer.FullName}" Width="*"/>
+
                 <DataGridTextColumn Header="Баланс" Binding="{Binding Balance}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>

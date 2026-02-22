@@ -1,4 +1,5 @@
 ﻿using System.Transactions;
+using System.ComponentModel.DataAnnotations.Schema;
 
 /// <summary>
 /// Абстрактний базовий клас для всіх банківських рахунків.
@@ -19,7 +20,16 @@ namespace FinancialSystem.Domain.Models;
     /// ІНКАПСУЛЯЦІЯ: Баланс може бути прочитаний ким завгодно, 
     /// але змінений лише зсередини цього класу або його спадкоємців.
     /// </summary>
-    public decimal Balance { get; protected set; }
+    private decimal _balance;
+    public decimal Balance
+    {
+        get => _balance;
+        protected set
+        {
+            _balance = value;
+            OnPropertyChanged(); // Tells the UI to update the DataGrid!
+        }
+    }
 
     // Композиція: Рахунок володіє своїми транзакціями. При видаленні рахунку
     // видаляються всі його транзакції.[23]
@@ -59,6 +69,21 @@ namespace FinancialSystem.Domain.Models;
 
         Balance -= amount;
         AddTransaction(new WithdrawTransaction(amount, description));
+    }
+
+    [NotMapped]
+    public string AccountTypeName
+    {
+        get
+        {
+            return this.GetType().Name switch
+            {
+                "SavingsAccount" => "Ощадний рахунок",
+                "CheckingAccount" => "Поточний рахунок",
+                "CreditAccount" => "Кредитний рахунок",
+                _ => "Стандартний рахунок"
+            };
+        }
     }
 
     /// <summary>

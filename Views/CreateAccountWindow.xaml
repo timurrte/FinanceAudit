@@ -8,6 +8,7 @@
         <ComboBox x:Name="AccountTypeComboBox" Margin="0,0,0,15" Height="25" SelectedIndex="0">
             <ComboBoxItem Content="Ощадний рахунок (Savings)" />
             <ComboBoxItem Content="Поточний рахунок (Checking)" />
+            <ComboBoxItem Content="Кредитний рахунок (Credit)" />
         </ComboBox>
 
         <TextBlock Text="Початковий баланс:" Margin="0,0,0,5" FontWeight="Bold"/>
