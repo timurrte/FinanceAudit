@@ -6,7 +6,7 @@ namespace FinancialSystem.Domain.Interfaces
 {
     /// <summary>
     /// Базовий інтерфейс для всіх сутностей бази даних.
-    /// Забезпечує наявність первинного ключа для універсальних репозиторіїв.
+    /// Забезпечує наявність первинного ключа.
     /// </summary>
     internal interface IEntity
     {

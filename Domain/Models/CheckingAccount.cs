@@ -1,8 +1,7 @@
 ﻿/// <summary>
-/// Розрахунковий рахунок. Дозволяє балансу опускатися нижче нуля в межах ліміту овердрафту.
-/// Стягує щомісячну комісію за обслуговування.
+/// Розрахунковий рахунок.
 /// </summary>
-/// 
+
 namespace FinancialSystem.Domain.Models;
 
 public class CheckingAccount : BankAccount
@@ -18,7 +17,7 @@ public class CheckingAccount : BankAccount
     }
 
     /// <summary>
-    /// ПОЛІМОРФІЗМ: Перевизначення (Override) методу зняття коштів.
+    /// Перевизначення методу зняття коштів.
     /// Замість перевірки на нуль, перевіряє ліміт овердрафту.
     /// </summary>
     public override void Withdraw(decimal amount, string description = "Зняття з поточного рахунку")
@@ -36,7 +35,6 @@ public class CheckingAccount : BankAccount
 
     public override void ProcessEndOfMonth()
     {
-        // Незалежно від балансу, списуємо комісію
         Withdraw(MonthlyFee, "Щомісячна комісія за обслуговування рахунку");
     }
 }

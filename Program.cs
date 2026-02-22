@@ -11,8 +11,6 @@ namespace FinancialSystem
         {
             // Initialize the WPF application
             var app = new Application();
-
-            // Run the application, telling it to start with your new XAML window
             app.Run(new MainWindow());
         }
     }

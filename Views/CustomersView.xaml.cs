@@ -13,10 +13,8 @@ namespace FinancialSystem.Views
 
         private void OpenCreateAccount_Click(object sender, RoutedEventArgs e)
         {
-            // Get the ViewModel attached to this View
             if (this.DataContext is CustomersViewModel viewModel)
             {
-                // Ensure a customer is actually selected
                 if (viewModel.SelectedCustomer == null)
                 {
                     MessageBox.Show("Будь ласка, оберіть клієнта зі списку перед створенням рахунку.",
@@ -24,17 +22,9 @@ namespace FinancialSystem.Views
                     return;
                 }
 
-                // Open the window and pass the selected customer
                 var dialog = new CreateAccountWindow(viewModel.SelectedCustomer);
 
-                // ShowDialog() pauses the code here until the child window is closed
                 bool? result = dialog.ShowDialog();
-
-                if (result == true)
-                {
-                    // Optional: If you want to refresh the accounts list after saving, 
-                    // you might trigger a refresh method on your viewmodel here.
-                }
             }
         }
     }

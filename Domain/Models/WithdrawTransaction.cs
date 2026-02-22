@@ -1,6 +1,6 @@
 ﻿
 /// <summary>
-/// Транзакція списання коштів (Спадкоємець 2).
+/// Транзакція списання коштів
 /// </summary>
 namespace FinancialSystem.Domain.Models;
 

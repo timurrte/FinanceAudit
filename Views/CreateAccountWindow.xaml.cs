@@ -10,22 +10,18 @@ namespace FinancialSystem.Views
     {
         private readonly Customer _selectedCustomer;
 
-        // Modify the constructor to require a Customer
         public CreateAccountWindow(Customer customer)
         {
             InitializeComponent();
             _selectedCustomer = customer;
 
-            // Optional: Update title to show who this is for
             this.Title = $"Новий рахунок для: {_selectedCustomer.FirstName} {_selectedCustomer.LastName}";
         }
 
         private void AccountTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Ensure components are initialized
             if (OverdraftPanel == null || CreditPanel == null || BalancePanel == null) return;
 
-            // Reset visibility
             OverdraftPanel.Visibility = Visibility.Collapsed;
             CreditPanel.Visibility = Visibility.Collapsed;
             BalancePanel.Visibility = Visibility.Visible;
@@ -39,7 +35,7 @@ namespace FinancialSystem.Views
                     break;
                 case 2: // Credit
                     CreditPanel.Visibility = Visibility.Visible;
-                    BalancePanel.Visibility = Visibility.Collapsed; // Usually credit accounts start at 0 or limit
+                    BalancePanel.Visibility = Visibility.Collapsed;
                     break;
             }
         }

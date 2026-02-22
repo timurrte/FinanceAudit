@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Транзакція зарахування коштів (Спадкоємець 1).
+/// Транзакція зарахування коштів
 /// </summary>
 namespace FinancialSystem.Domain.Models;
 

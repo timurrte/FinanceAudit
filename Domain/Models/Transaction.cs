@@ -1,10 +1,4 @@
-﻿
-// =================================================================================
-// 4. ІЄРАРХІЯ ТРАНЗАКЦІЙ
-// Забезпечує історію операцій та реалізацію патерну Command.[3, 20]
-// =================================================================================
-
-using FinancialSystem.Domain.Interfaces;
+﻿using FinancialSystem.Domain.Interfaces;
 
 /// <summary>
 /// Базовий абстрактний клас для всіх фінансових транзакцій.
@@ -28,6 +22,5 @@ public abstract class Transaction : BaseEntity, ITransactionProcessor
         Date = DateTime.UtcNow;
     }
 
-    // Метод, який повинен бути реалізований специфічними типами транзакцій
     public abstract void Execute(BankAccount account);
 }

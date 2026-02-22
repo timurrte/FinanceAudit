@@ -86,10 +86,6 @@ namespace FinancialSystem.Domain.Models;
         }
     }
 
-    /// <summary>
-    /// Абстрактний метод для автоматичної обробки закриття фінансового місяця.
-    /// Змушує всі похідні класи реалізувати власну унікальну логіку.
-    /// </summary>
     public abstract void ProcessEndOfMonth();
 
     protected void AddTransaction(Transaction transaction)

@@ -22,7 +22,6 @@ namespace FinancialSystem.ViewModels
         }
     }
 
-    // Допоміжний клас для прив'язки кнопок (Commands) до методів у ViewModel
     public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;
@@ -46,13 +45,11 @@ namespace FinancialSystem.ViewModels
     }
         public class MainViewModel : ViewModelBase
         {
-            // Зберігаємо екземпляри, щоб не втрачати стан при перемиканні
             private readonly CustomersViewModel _customersViewModel;
             private readonly AccountsViewModel _accountsViewModel;
 
             private ViewModelBase _currentViewModel;
 
-            // Властивість, до якої буде прив'язаний ContentControl
             public ViewModelBase CurrentViewModel
             {
                 get => _currentViewModel;
@@ -70,18 +67,16 @@ namespace FinancialSystem.ViewModels
                 ShowCustomersCommand = new RelayCommand(o => CurrentViewModel = _customersViewModel);
                 ShowAccountsCommand = new RelayCommand(o => CurrentViewModel = _accountsViewModel);
 
-                // Встановлюємо стартову сторінку за замовчуванням
                 CurrentViewModel = _customersViewModel;
             }
         }
 
-    // 2. VIEWMODEL ДЛЯ УПРАВЛІННЯ КЛІЄНТАМИ
+    // VIEWMODEL ДЛЯ УПРАВЛІННЯ КЛІЄНТАМИ
     public class CustomersViewModel : ViewModelBase
     {
         private ObservableCollection<Customer> _customers;
         private Customer _selectedCustomer;
 
-        // ObservableCollection автоматично оновлює DataGrid при додаванні/видаленні елементів 
         public ObservableCollection<Customer> Customers
         {
             get => _customers;
@@ -116,25 +111,20 @@ namespace FinancialSystem.ViewModels
 
         private void AddCustomer(object parameter)
         {
-            // Відкриваємо наше нове вікно
             var dialog = new FinancialSystem.Views.CreateCustomerWindow();
 
-            // ShowDialog() зупиняє виконання коду тут, поки вікно не закриється
             bool? result = dialog.ShowDialog();
 
-            // Якщо користувач натиснув "Зберегти" і валідація пройшла успішно
             if (result == true && dialog.CreatedCustomer != null)
             {
                 var newCustomer = dialog.CreatedCustomer;
 
-                // Зберігаємо в базу даних
                 using (var context = new FinancialDbContext())
                 {
                     context.Customers.Add(newCustomer);
                     context.SaveChanges();
                 }
 
-                // Додаємо в ObservableCollection, щоб одразу побачити в таблиці (DataGrid)
                 Customers.Add(newCustomer);
             }
         }
@@ -158,7 +148,7 @@ namespace FinancialSystem.ViewModels
         }
     }
 
-    // 3. VIEWMODEL ДЛЯ УПРАВЛІННЯ РАХУНКАМИ ТА ТРАНЗАКЦІЯМИ
+    // VIEWMODEL ДЛЯ УПРАВЛІННЯ РАХУНКАМИ ТА ТРАНЗАКЦІЯМИ
     public class AccountsViewModel : ViewModelBase
     {
         private ObservableCollection<BankAccount> _accounts;
@@ -177,7 +167,6 @@ namespace FinancialSystem.ViewModels
             set { _selectedAccount = value; OnPropertyChanged(); }
         }
 
-        // Властивість, яка прив'язується до текстового поля суми в графічному інтерфейсі
         public decimal TransactionAmount
         {
             get => _transactionAmount;
@@ -206,7 +195,6 @@ namespace FinancialSystem.ViewModels
 
         private bool CanExecuteTransaction(object parameter)
         {
-            // Транзакція можлива лише якщо обрано рахунок і сума більша за нуль
             return SelectedAccount != null && TransactionAmount > 0;
         }
 
@@ -214,17 +202,15 @@ namespace FinancialSystem.ViewModels
         {
             try
             {
-                // Виклик інкапсульованого методу бізнес-логіки
                 SelectedAccount.Deposit(TransactionAmount);
                 SaveChangesToDatabase();
 
-                TransactionAmount = 0; // Очищення поля після успішної операції
-                OnPropertyChanged(nameof(SelectedAccount)); // Оновлення інтерфейсу
+                TransactionAmount = 0;
+                OnPropertyChanged(nameof(SelectedAccount));
                 CollectionViewSource.GetDefaultView(Accounts).Refresh();
             }
             catch (Exception ex)
             {
-                // Обробка помилок (наприклад, виведення MessageBox)
             }
         }
 
@@ -232,8 +218,6 @@ namespace FinancialSystem.ViewModels
         {
             try
             {
-                // Завдяки поліморфізму, тут викликається специфічний метод Withdraw 
-                // для конкретного типу рахунку (Savings, Checking тощо)
                 SelectedAccount.Withdraw(TransactionAmount);
                 SaveChangesToDatabase();
 
@@ -243,7 +227,6 @@ namespace FinancialSystem.ViewModels
             }
             catch (InvalidOperationException ex)
             {
-                // Перехоплення помилок овердрафту або нестачі коштів
             }
         }
 
