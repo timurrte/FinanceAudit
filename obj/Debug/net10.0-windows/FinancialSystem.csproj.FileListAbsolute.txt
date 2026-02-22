@@ -1,6 +1,4 @@
 C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.csproj.AssemblyReference.cache
-C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.Form1.resources
-C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.csproj.GenerateResource.cache
 C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.AssemblyInfoInputs.cache
 C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.AssemblyInfo.cs
@@ -57,3 +55,14 @@ C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\refint\Fin
 C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.pdb
 C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.genruntimeconfig.cache
 C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\ref\FinancialSystem.dll
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem_MarkupCompile.cache
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem_MarkupCompile.lref
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\Views\AccountsView.baml
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\Views\AccountsView.g.cs
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\Views\MainWindow.g.cs
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\Views\CustomersView.baml
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\Views\CustomersView.g.cs
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\Views\MainWindow.baml
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.g.resources
+C:\Users\timur\source\repos\FinancialSystem\obj\Debug\net10.0-windows\FinancialSystem.sourcelink.json

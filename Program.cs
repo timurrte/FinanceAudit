@@ -1,17 +1,19 @@
+using System;
+using System.Windows;
+
 namespace FinancialSystem
 {
+    using FinancialSystem.Views;
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            // Initialize the WPF application
+            var app = new Application();
+
+            // Run the application, telling it to start with your new XAML window
+            app.Run(new MainWindow());
         }
     }
 }
